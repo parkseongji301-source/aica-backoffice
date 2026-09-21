@@ -1,4 +1,6 @@
 /target/
+/.local-data/
+*.log
 /.tools/
 /.cache/
 /.idea/

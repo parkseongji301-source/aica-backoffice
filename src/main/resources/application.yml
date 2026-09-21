@@ -1,11 +1,26 @@
 spring:
   application:
-    name: backoffice-stage0
+    name: aica-backoffice
+  profiles:
+    default: dev
   thymeleaf:
-    cache: false
+    cache: true
 server:
   address: 127.0.0.1
   port: 8080
+  servlet:
+    session:
+      timeout: 30m
+      cookie:
+        http-only: true
+        same-site: lax
   error:
     include-message: never
     include-stacktrace: never
+    include-binding-errors: never
+backoffice:
+  bootstrap:
+    enabled: ${BACKOFFICE_BOOTSTRAP_ENABLED:false}
+    email: ${BACKOFFICE_BOOTSTRAP_EMAIL:}
+    name: ${BACKOFFICE_BOOTSTRAP_NAME:최상위 관리자}
+    password: ${BACKOFFICE_BOOTSTRAP_PASSWORD:}

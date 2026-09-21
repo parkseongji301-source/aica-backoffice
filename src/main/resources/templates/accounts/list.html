@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('계정 관리')}"></head>
+<body><header th:replace="~{fragments :: header}"></header><main>
+  <h1>계정 관리</h1>
+  <p class="muted">ADMIN과 SUPPORTER 계정을 발급하고 역할·활성 상태를 관리합니다.</p>
+  <div th:replace="~{fragments :: messages}"></div>
+  <div class="actions"><a class="button" th:href="@{/admin/accounts/new}">계정 생성</a></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>이름 / 이메일</th><th>역할</th><th>상태</th><th>관리</th></tr></thead>
+    <tbody><tr th:each="account : ${accounts}">
+      <td><strong th:text="${account.displayName}"></strong><br><span th:text="${account.email}"></span></td>
+      <td th:text="${account.role}"></td>
+      <td><span th:text="${account.active ? '활성' : '비활성'}"></span><br><span class="muted" th:if="${account.passwordChangeRequired}">비밀번호 변경 필요</span></td>
+      <td>
+        <span th:if="${account.id == currentUser.id}" class="muted">본인 계정</span>
+        <div class="actions" th:if="${account.id != currentUser.id}">
+          <a th:href="@{/admin/accounts/{id}/role(id=${account.id})}">역할 변경</a>
+          <form th:if="${account.active}" th:action="@{/admin/accounts/{id}/reset-password(id=${account.id})}" method="post"><button class="secondary" type="submit">비밀번호 초기화</button></form>
+          <form th:if="${account.active}" th:action="@{/admin/accounts/{id}/deactivate(id=${account.id})}" method="post"><button class="danger" type="submit">비활성화</button></form>
+        </div>
+      </td>
+    </tr></tbody>
+  </table></div>
+  <p class="muted">역할 변경·비활성화·비밀번호 초기화는 해당 계정의 기존 로그인 상태를 무효화합니다.</p>
+</main></body></html>

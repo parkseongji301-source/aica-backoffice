@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('게시물 목록')}"></head>
+<body><header th:replace="~{fragments :: header}"></header><main>
+  <h1>게시물 목록</h1>
+  <p class="muted" th:text="${canManageAllPosts ? '전체 게시물을 조회하고 관리할 수 있습니다.' : '본인이 작성한 게시물만 조회하고 관리할 수 있습니다.'}"></p>
+  <div th:replace="~{fragments :: messages}"></div>
+  <div class="actions"><a class="button" th:href="@{/admin/posts/new}">게시물 등록</a><span th:text="'총 ' + ${pageData.total} + '건'"></span></div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>번호</th><th>제목</th><th>작성자</th><th>등록일</th></tr></thead>
+    <tbody>
+      <tr th:if="${#lists.isEmpty(pageData.items)}"><td colspan="4">등록된 게시물이 없습니다.</td></tr>
+      <tr th:each="post : ${pageData.items}">
+        <td th:text="${post.id}"></td>
+        <td><a th:href="@{/admin/posts/{id}(id=${post.id})}" th:text="${post.title}"></a></td>
+        <td th:text="${post.authorName}"></td><td th:text="${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+      </tr>
+    </tbody>
+  </table></div>
+  <nav class="actions" aria-label="페이지 이동">
+    <a th:if="${pageData.page > 0}" th:href="@{/admin/posts(page=${pageData.page - 1})}">이전</a>
+    <span th:text="${pageData.page + 1} + ' / ' + ${pageData.totalPages()}"></span>
+    <a th:if="${pageData.page + 1 < pageData.totalPages()}" th:href="@{/admin/posts(page=${pageData.page + 1})}">다음</a>
+  </nav>
+</main></body></html>

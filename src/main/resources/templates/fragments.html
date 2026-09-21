@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${title} + ' · AICA 백오피스'">AICA 백오피스</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+<header th:fragment="header" th:if="${currentUser != null}">
+  <a class="brand" th:href="@{/admin/posts}">AICA 백오피스</a>
+  <nav aria-label="주 메뉴">
+    <a th:href="@{/admin/posts}">게시물</a>
+    <a th:if="${canManageAccounts}" th:href="@{/admin/accounts}">계정 관리</a>
+    <a th:href="@{/account/password}">비밀번호 변경</a>
+    <form th:action="@{/logout}" method="post"><button type="submit">로그아웃</button></form>
+  </nav>
+  <span class="identity" th:text="${currentUser.displayName} + ' · ' + ${currentUser.role}"></span>
+</header>
+<div th:fragment="messages">
+  <p class="error" role="alert" th:if="${formError != null}" th:text="${formError}"></p>
+  <p class="notice" role="status" th:if="${notice != null}" th:text="${notice}"></p>
+</div>
+</body></html>

@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head(${editing ? '게시물 수정' : '게시물 등록'})}"></head>
+<body><header th:replace="~{fragments :: header}"></header><main>
+  <h1 th:text="${editing ? '게시물 수정' : '게시물 등록'}"></h1>
+  <div th:replace="~{fragments :: messages}"></div>
+  <form th:action="${editing} ? @{/admin/posts/{id}/edit(id=${postId})} : @{/admin/posts}" method="post">
+    <label for="title">제목</label><input id="title" name="title" th:value="${title}" required maxlength="200">
+    <label for="content">본문</label><textarea id="content" name="content" th:text="${content}" required maxlength="20000"></textarea>
+    <p class="muted">본문은 일반 텍스트로 저장됩니다.</p>
+    <div class="actions"><button type="submit" th:text="${editing ? '수정 저장' : '게시물 등록'}"></button><a th:href="@{/admin/posts}">목록으로</a></div>
+  </form>
+</main></body></html>

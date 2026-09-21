@@ -1,0 +1,26 @@
+:root { color-scheme: light; font-family: system-ui, "Malgun Gothic", sans-serif; color: #1e293b; background: #f4f6f9; }
+* { box-sizing: border-box; }
+body { margin: 0; line-height: 1.6; }
+header { background: #172b4d; color: white; padding: 1rem 2rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+header a { color: white; } header .brand { font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+nav { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+header .identity { margin-left: auto; font-size: .9rem; }
+main { max-width: 1080px; margin: 2rem auto; padding: 1.8rem; background: white; border: 1px solid #dbe2ea; border-radius: 10px; }
+main.narrow { max-width: 520px; }
+h1 { font-size: 1.7rem; margin: 0 0 1rem; } h2 { font-size: 1.2rem; }
+a { color: #174ea6; } button, .button { cursor: pointer; display: inline-block; font: inherit; border: 1px solid #174ea6; border-radius: 5px; background: #174ea6; color: white; padding: .5rem .9rem; text-decoration: none; }
+button.secondary, .button.secondary { background: white; color: #174ea6; }
+button.danger { background: white; border-color: #a52332; color: #a52332; }
+input, textarea, select { display: block; width: 100%; margin: .35rem 0 1rem; padding: .65rem; border: 1px solid #8b99ad; border-radius: 5px; font: inherit; color: inherit; }
+textarea { min-height: 260px; resize: vertical; } label { font-weight: 600; display: block; }
+table { width: 100%; border-collapse: collapse; } td, th { text-align: left; padding: .8rem; border-bottom: 1px solid #dbe2ea; vertical-align: top; }
+th { background: #f0f4f8; white-space: nowrap; } .table-wrap { overflow-x: auto; }
+.actions { display: flex; gap: .65rem; flex-wrap: wrap; align-items: center; margin: 1rem 0; }
+.actions form, header form { margin: 0; }
+.error { border-left: 4px solid #be123c; background: #fff1f2; padding: .8rem; color: #881337; }
+.notice { border-left: 4px solid #16835c; background: #edfcf4; padding: .8rem; }
+.muted, .meta { color: #526176; font-size: .9rem; }
+.content { white-space: pre-wrap; overflow-wrap: anywhere; padding: 1rem 0; }
+.credential { display: block; padding: 1rem; background: #eef2ff; font-size: 1.2rem; overflow-wrap: anywhere; }
+:focus-visible { outline: 3px solid #e4a600; outline-offset: 3px; }
+@media(max-width: 720px) { main { margin: 1rem .7rem; padding: 1rem; } header { padding: 1rem; } header .identity { margin-left: 0; } td,th { padding: .55rem; } }

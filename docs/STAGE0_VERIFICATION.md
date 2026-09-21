@@ -1,5 +1,9 @@
 # 0단계 기술 검증 결과와 실행 방법
 
+> **보존 기록 안내:** 아래 내용은 MVP 구현 전 Stage 0 시점의 검증 결과다. 원본 코드는 Git 커밋 `6ed6fd6`에 보존되어 있다. 현재 실행 JAR에는 검증한 RTE·MyBatis 업무 의존성과 인증·계정·게시물 기능이 포함된다. 현재 실행 방법은 [MVP 전달 문서](MVP_DELIVERY.md)를 따른다.
+>
+> 기존 Stage 0 화면·접근 차단은 `stage0` Spring 프로필에서 유지하며, `Stage0WebTest`는 그 프로필로 실행한다. 데이터 접근·RTE 호환성 테스트의 기존 검증 내용은 유지했다. 현재 코드에서 원래 7개 기술 검증만 재실행하려면 `.\scripts\mvn-local.ps1 -Pegov43-probe '-Dtest=Stage0WebTest,Stage0DatabaseTest,Egov43CompatibilityTest' clean test`를 사용한다. 일반 MVP와 Stage 0의 기대 동작을 섞지 않는다.
+
 검증일: 2026-09-21  
 기준: [read.md](../read.md)의 0단계와 이번 작업의 범위 제한  
 판정: **최소 프로젝트와 선택한 기술 검증 범위 통과. 전체 RTE 호환성·운영 구성 확정은 아님.**

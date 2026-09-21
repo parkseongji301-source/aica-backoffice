@@ -2,6 +2,7 @@ package egovframework.backoffice.verification;
 
 import org.apache.catalina.util.ServerInfo;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootVersion;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
         properties = "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration")
+@ActiveProfiles("stage0")
 class Stage0WebTest {
     @Autowired TestRestTemplate http;
     @Autowired ApplicationContext context;

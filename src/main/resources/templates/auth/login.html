@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('로그인')}"></head>
+<body><main class="narrow">
+  <h1>백오피스 로그인</h1>
+  <p class="muted">관리자가 발급한 계정으로 로그인하세요.</p>
+  <p class="error" role="alert" th:if="${param.error}">이메일 또는 비밀번호를 확인하세요. 비활성 계정은 로그인할 수 없습니다.</p>
+  <p class="notice" th:if="${param.logout}">로그아웃했습니다.</p>
+  <p class="notice" th:if="${param.changed}">비밀번호를 변경했습니다. 새 비밀번호로 로그인하세요.</p>
+  <p class="notice" th:if="${param.expired}">계정 정보가 변경되어 로그아웃되었습니다. 다시 로그인하세요.</p>
+  <form th:action="@{/login}" method="post">
+    <label for="username">이메일</label>
+    <input id="username" name="username" type="email" required maxlength="254" autocomplete="username">
+    <label for="password">비밀번호</label>
+    <input id="password" name="password" type="password" required autocomplete="current-password">
+    <button type="submit">로그인</button>
+  </form>
+</main></body></html>

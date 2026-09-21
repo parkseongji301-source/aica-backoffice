@@ -2,6 +2,7 @@ package egovframework.backoffice.stage0;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -11,6 +12,7 @@ import org.springframework.security.web.savedrequest.NullRequestCache;
 
 /** Technical access-denial probe only. No login, account, or RBAC implementation. */
 @Configuration(proxyBeanMethods = false)
+@Profile("stage0")
 public class Stage0SecurityConfiguration {
     @Bean
     SecurityFilterChain stage0FilterChain(HttpSecurity http) throws Exception {

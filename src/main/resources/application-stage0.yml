@@ -1,0 +1,6 @@
+# Historical technical probe; business components and DB autoconfiguration are disabled.
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration
