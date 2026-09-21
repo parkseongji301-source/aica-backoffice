@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: backoffice-stage0
+  thymeleaf:
+    cache: false
+server:
+  address: 127.0.0.1
+  port: 8080
+  error:
+    include-message: never
+    include-stacktrace: never

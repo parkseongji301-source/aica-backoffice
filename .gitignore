@@ -1,0 +1,9 @@
+/target/
+/.tools/
+/.cache/
+/.idea/
+*.iml
+.vscode/
+.env
+.env.*
+!.env.example
